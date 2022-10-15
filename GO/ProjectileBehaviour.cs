@@ -1,9 +1,11 @@
 ﻿using GlobalEnums;
+using HutongGames.PlayMaker;
+using HutongGames.PlayMaker.Actions;
+using Satchel;
 using System;
-using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Shuriken.GO
@@ -85,18 +87,36 @@ namespace Shuriken.GO
 
         public void ChangeState()
         {
-            if (currentState != states.Hang) currentState = states.Hang;
-            else if (currentState == states.Hang && InputHandler.Instance.inputActions.up.IsPressed)
+            // Modding.Logger.Log(
+
+            //);
+
+            if (currentState != states.Hang)
             {
+                currentState = states.Hang;
+                HeroController.instance.RelinquishControl();
+                HeroController.instance.ResetHardLandingTimer();
+                HeroController.instance.RegainControl();
+            }
+            else if (currentState == states.Hang)
+            {
+                if (InputHandler.Instance.inputActions.up.IsPressed)
+                {
+
                 RaycastHit2D rayDown = Physics2D.Raycast(transform.position, -Vector2.up);
                 RaycastHit2D rayUp = Physics2D.Raycast(transform.position, Vector2.up);
-                if (controller.hasTeleport && (!col.IsTouchingLayers(12) && !col.IsTouchingLayers(8)  && !col.IsTouchingLayers(10) && !col.IsTouchingLayers(22)) && (rayDown.collider != null) &&((
+                if (controller.hasTeleport && (!col.IsTouchingLayers(12) && !col.IsTouchingLayers(8) && !col.IsTouchingLayers(10) && !col.IsTouchingLayers(22)) && (rayDown.collider != null) && ((
                     (rayDown.collider.Distance(col).distance < 100) && (rayUp.collider != null) &&
-                    ((rayUp.collider.Distance(col).distance < 100) )|| GameManager.instance.sceneName.Contains("Town"))))
+                    ((rayUp.collider.Distance(col).distance < 100)) || GameManager.instance.sceneName.Contains("Town"))))
                 {
+                    if (controller.teleported) return;
+                    controller.teleported = true;
                     HeroController.instance.transform.position = this.transform.position;
                     Destroy(this.gameObject);
                 }
+                }
+                if (InputHandler.Instance.inputActions.down.IsPressed) Destroy(this.gameObject);
+
             }
             else currentState = states.Back;
         }

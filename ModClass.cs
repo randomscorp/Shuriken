@@ -63,12 +63,19 @@ namespace Shuriken
         {
             On.HeroController.Start += HeroController_Start;
             On.HeroController.TakeDamage += DEstroyOnDamage;
+            On.HeroController.ResetAirMoves += HeroController_ResetAirMoves;
             bool rando = ModHooks.GetMod("Randomizer 4") is Mod;
             bool ic = ModHooks.GetMod("ItemChangerMod") is Mod;
 
             if (rando) Rando.MenuHolder.Hook();
             Rando.ShurikenRando.Hook(rando, ic);
 
+        }
+
+        private void HeroController_ResetAirMoves(On.HeroController.orig_ResetAirMoves orig, HeroController self)
+        {
+            controller.teleported = false;
+            orig(self);
         }
 
         private void DEstroyOnDamage(On.HeroController.orig_TakeDamage orig, HeroController self, GameObject go, GlobalEnums.CollisionSide damageSide, int damageAmount, int hazardType)

@@ -23,6 +23,8 @@ namespace Shuriken.GO
         public int damageHover => PlayerData.instance.nailDamage/3;
         public int damageContact => ((int)(16 * (PlayerData.instance.equippedCharm_19 ? 1.3f : 1) * (Shuriken.LS.shurikenLevel * 0.5f)));
         public float ratio = 3;
+        public bool teleported = false;
+
         public int damage()
         {
             try
