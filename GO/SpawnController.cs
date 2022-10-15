@@ -15,13 +15,14 @@ namespace Shuriken.GO
     {
         public GameObject shuriken;
         public PlayerAction key => Shuriken.GS.shuriknBind.ShurikenKey;
+        public PlayerAction button => Shuriken.GS.shurikenButton.ShurikenKey;
         public GameObject shurikenInstance;
         public ProjectileBehaviour projectileBehaviour;
 
         public float speed = 25;
         public float fowardTime = 0.33f;
-        public int damageHover => PlayerData.instance.nailDamage/3;
-        public int damageContact => ((int)(16 * (PlayerData.instance.equippedCharm_19 ? 1.3f : 1) * (Shuriken.LS.shurikenLevel * 0.5f)));
+        public int damageHover => ((int)(PlayerData.instance.nailDamage*1.2f * (Shuriken.LS.shurikenLevel * 0.5f)));
+        public int damageContact => ((int)(20 * (PlayerData.instance.equippedCharm_19 ? 1.3f : 1) * (Shuriken.LS.shurikenLevel * 0.5f)));
         public float ratio = 3;
         public bool teleported = false;
 
@@ -69,7 +70,7 @@ namespace Shuriken.GO
 
         private void Update()
         {
-            if (canShuriken() && key.IsPressed && key.HasChanged)
+            if (canShuriken() && key.IsPressed && key.HasChanged && button.IsPressed && button.HasChanged)
             {
                 if (shurikenInstance == null)
                 {

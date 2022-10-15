@@ -25,7 +25,7 @@ namespace Shuriken
         public int items = 1;
         public bool shurikenRando = true;
         public bool StartWithShuriken = true;
-        public bool Randomize_Teleport = false;
+        public bool RandomizeTeleport = false;
 
     }
 

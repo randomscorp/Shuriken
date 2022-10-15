@@ -43,10 +43,11 @@ namespace Shuriken.Rando
 
             if (Shuriken.GS.shurikenRando)
             {
+                Shuriken.LS.shurikenRando = true;
                 if (Shuriken.GS.StartWithShuriken) Shuriken.LS.shurikenLevel = 1;
-                if (Shuriken.GS.Randomize_Teleport) Shuriken.LS.hasTeleport = false;
+                if (Shuriken.GS.RandomizeTeleport) Shuriken.LS.hasTeleport = false;
                 if (Shuriken.GS.items == 0) Shuriken.GS.items = 1;
-                if (Shuriken.GS.Randomize_Teleport && Shuriken.GS.items == 1) Shuriken.GS.items = 2;
+                if (Shuriken.GS.RandomizeTeleport && Shuriken.GS.items == 1) Shuriken.GS.items = 2;
                 rb.AddItemByName("Shuriken", Shuriken.GS.items);
 
             }

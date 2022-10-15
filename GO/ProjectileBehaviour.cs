@@ -87,10 +87,6 @@ namespace Shuriken.GO
 
         public void ChangeState()
         {
-            // Modding.Logger.Log(
-
-            //);
-
             if (currentState != states.Hang)
             {
                 currentState = states.Hang;
@@ -105,17 +101,18 @@ namespace Shuriken.GO
 
                 RaycastHit2D rayDown = Physics2D.Raycast(transform.position, -Vector2.up);
                 RaycastHit2D rayUp = Physics2D.Raycast(transform.position, Vector2.up);
-                if (controller.hasTeleport && (!col.IsTouchingLayers(12) && !col.IsTouchingLayers(8) && !col.IsTouchingLayers(10) && !col.IsTouchingLayers(22)) && (rayDown.collider != null) && ((
-                    (rayDown.collider.Distance(col).distance < 100) && (rayUp.collider != null) &&
-                    ((rayUp.collider.Distance(col).distance < 100)) || GameManager.instance.sceneName.Contains("Town"))))
+                if (controller.hasTeleport)
                 {
                     if (controller.teleported) return;
                     controller.teleported = true;
                     HeroController.instance.transform.position = this.transform.position;
-                    Destroy(this.gameObject);
+                HeroController.instance.ResetHardLandingTimer();
+
+                        Destroy(this.gameObject);
                 }
                 }
                 if (InputHandler.Instance.inputActions.down.IsPressed) Destroy(this.gameObject);
+                else currentState = states.Back;
 
             }
             else currentState = states.Back;
