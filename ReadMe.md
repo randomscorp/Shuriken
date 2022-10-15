@@ -11,10 +11,14 @@ A tiny rando extension a new skill to the game: a shuriken that you can teleport
   * Key + Up to teleport to it
   * Key + Down to destroy it
   * Key again to call it back
-* Contact damage scails with shaman, hover damage scails with nail upgrades and both scail with the amount of shuriken aquired
+* Contact damage scales with shaman, hover damage scales with nail upgrades and both scale with the amount of shuriken aquired
 * Randomize the ability to teleport
-* Scail infinetly by randomizing as many shurikens as you want
+* Scale infinetly by randomizing as many shurikens as you want
 
+## Customization
+![](static/rando.png)
+
+The sprites are loaded on initialize and can be customized. Create your own 512x512 image and replace the "sprite.png" file on the mod static folder. To replace the pick up icon replace the "rando.png" file in the static folder with your 100x100 image. 
 
 ## Credits
 
