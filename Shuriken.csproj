@@ -29,14 +29,17 @@
 		
 		<MakeDir Directories="$(ExportDir)/$(TargetName)/" />
 		<MakeDir Directories="$(ExportDir)/$(TargetName)/zip/" />
+		<MakeDir Directories="$(ExportDir)/$(TargetName)/zip/static" />
 		<MakeDir Condition="!Exists('$(HollowKnightRefs)/Mods/$(TargetName)/')" Directories="$(HollowKnightRefs)/Mods/$(TargetName)/" />
 		<MakeDir Condition="!Exists('$(HollowKnightRefs)/Mods/$(TargetName)/static')" Directories="$(HollowKnightRefs)/Mods/$(TargetName)/static" />
 
+		<Copy SourceFiles="@(static)" DestinationFolder="$(ExportDir)/$(TargetName)/static/" />
 		<Copy SourceFiles="$(TargetPath);$(TargetDir)/$(TargetName).pdb" DestinationFolder="$(HollowKnightRefs)/Mods/$(TargetName)/" />
 		<Copy SourceFiles="$(TargetPath)" DestinationFolder="$(ExportDir)/$(TargetName)/" />
-		<Copy SourceFiles="@(static)" DestinationFolder="$(ExportDir)/$(TargetName)/static/" />
 
 		<Copy SourceFiles="ReadMe.md;$(TargetPath);$(TargetDir)/$(TargetName).pdb" DestinationFolder="$(ExportDir)/$(TargetName)/zip/" />
+		<Copy SourceFiles="@(static)" DestinationFolder="$(ExportDir)/$(TargetName)/zip/static/" />
+
 
 		<ZipDirectory SourceDirectory="$(ExportDir)/$(TargetName)/zip/" DestinationFile="$(ExportDir)/$(TargetName)/$(TargetName).zip" />
 		<RemoveDir Directories="$(ExportDir)/$(TargetName)/zip/" />

@@ -19,6 +19,7 @@ namespace Shuriken
 
         public static SGlobalSettings GS = new();
         public static SLocalSettings LS = new();
+        public override string GetVersion() => "v1.0.0";
 
         #region Settings and menu
         public bool ToggleButtonInsideMenu => false;
