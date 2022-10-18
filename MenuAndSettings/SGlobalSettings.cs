@@ -36,7 +36,7 @@ namespace Shuriken
         public int items = 1;
         public bool shurikenRando = true;
         public bool StartWithShuriken = false;
-        public bool DontRandomizeTeleport = false;
+        public bool RandomizeTeleport = false;
     }
 
     public class KeyBinds : PlayerActionSet

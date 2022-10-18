@@ -64,7 +64,7 @@ namespace Shuriken.Rando
             if (!Shuriken.GS.RS.shurikenRando) return;
             Term shurikenterm= lmb.GetOrAddTerm("SHURIKEN");
             if (Shuriken.GS.RS.items == 0) Shuriken.GS.RS.items = 1;
-            if (Shuriken.GS.RS.DontRandomizeTeleport&& Shuriken.GS.RS.items == 1) Shuriken.GS.RS.items = 2;
+            if (Shuriken.GS.RS.RandomizeTeleport&& Shuriken.GS.RS.items == 1) Shuriken.GS.RS.items = 2;
 
             lmb.AddItem(new SingleItem("Shuriken",new TermValue(shurikenterm, Shuriken.GS.RS.items)));
 
