@@ -22,11 +22,21 @@ namespace Shuriken
 
         // public string spriteName = ( new DirectoryInfo(((Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + $"/static").ToString())).GetFiles()[0].Name);
         //public int randomInt = 0;
+
+        public bool TeleportEnabled = true;
+        public bool SoulMode = false;
+
+        public SRandoSettings RS= new();
+
+    }
+
+    [Serializable]
+    public class SRandoSettings
+    {
         public int items = 1;
         public bool shurikenRando = true;
-        public bool StartWithShuriken = true;
-        public bool RandomizeTeleport = false;
-
+        public bool StartWithShuriken = false;
+        public bool DontRandomizeTeleport = false;
     }
 
     public class KeyBinds : PlayerActionSet

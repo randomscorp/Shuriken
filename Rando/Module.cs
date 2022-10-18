@@ -10,7 +10,7 @@ namespace Shuriken.Rando
     {
         public override void Initialize()
         {
-            if (!Shuriken.GS.shurikenRando) return;
+            if (!Shuriken.GS.RS.shurikenRando) return;
 
         }
 

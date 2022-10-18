@@ -23,7 +23,7 @@ namespace Shuriken.Rando
 
         private static void SetupRefs(RequestBuilder rb)
         {
-            if ((!Shuriken.GS.shurikenRando)) return;
+            if ((!Shuriken.GS.RS.shurikenRando)) return;
             rb.EditItemRequest("Shuriken", info =>
             {
                 info.getItemDef = () => new ItemDef()
@@ -41,14 +41,14 @@ namespace Shuriken.Rando
         private static void AddShuriken(RequestBuilder rb)
         {
 
-            if (Shuriken.GS.shurikenRando)
+            if (Shuriken.GS.RS.shurikenRando)
             {
                 Shuriken.LS.shurikenRando = true;
-                if (Shuriken.GS.StartWithShuriken) Shuriken.LS.shurikenLevel = 1;
-                if (Shuriken.GS.RandomizeTeleport) Shuriken.LS.hasTeleport = false;
-                if (Shuriken.GS.items == 0) Shuriken.GS.items = 1;
-                if (Shuriken.GS.RandomizeTeleport && Shuriken.GS.items == 1) Shuriken.GS.items = 2;
-                rb.AddItemByName("Shuriken", Shuriken.GS.items);
+                if (Shuriken.GS.RS.StartWithShuriken) Shuriken.LS.shurikenLevel = 1;
+                if (Shuriken.GS.RS.DontRandomizeTeleport) Shuriken.LS.hasTeleport = false;
+                if (Shuriken.GS.RS.items == 0) Shuriken.GS.RS.items = 1;
+                if (Shuriken.GS.RS.DontRandomizeTeleport && Shuriken.GS.RS.items == 1) Shuriken.GS.RS.items = 2;
+                rb.AddItemByName("Shuriken", Shuriken.GS.RS.items);
 
             }
 

@@ -23,24 +23,31 @@ namespace Shuriken.GO
         public Vector2 direction;
         float time = 0;
         public float speed;
-
+        public bool createdInAir = false;
 
         void Start()
         {
             controller = HeroController.instance.gameObject.GetAddComponent<SpawnController>();
             body = this.GetComponent<Rigidbody2D>();
             col = GetComponent<Collider2D>();
-            speed=controller.speed;
+            speed = controller.speed;
+            createdInAir = !HeroController.instance.CheckTouchingGround() && (controller.teleported);
+
         }
 
         void OnTriggerEnter2D(Collider2D col)
         {
+
             if (currentState != states.Foward && col.gameObject.name == "Knight")
             {
                 Destroy(this.gameObject);
-
+                //controller.teleported = false;
             }
 
+        }
+        void Update()
+        {
+            if(HeroController.instance.CheckTouchingGround()) controller.teleported = false;
         }
 
         void FixedUpdate()
@@ -98,41 +105,44 @@ namespace Shuriken.GO
             {
                 if (InputHandler.Instance.inputActions.up.IsPressed)
                 {
-
-                RaycastHit2D rayDown = Physics2D.Raycast(transform.position, -Vector2.up);
-                RaycastHit2D rayUp = Physics2D.Raycast(transform.position, Vector2.up);
-                if (controller.hasTeleport)
-                {
-                        if (controller.teleported) yield return null;
-                        controller.teleported = true;
-                        var anim = HeroController.instance.GetComponent<HeroAnimationController>();
-
-                        HeroController.instance.RelinquishControl();
-                        HeroController.instance.ResetHardLandingTimer();
-                            HeroController.instance.StopAnimationControl();
-
-                        HeroController.instance.dJumpFlashPrefab.SetActive(true);
-                        yield return new WaitForSeconds(0.025f);
-                        anim.animator.Play("Scream Start");
-                        anim.animator.Play("Scream");
+                    RaycastHit2D rayDown = Physics2D.Raycast(transform.position, -Vector2.up);
+                    RaycastHit2D rayUp = Physics2D.Raycast(transform.position, Vector2.up);
+                    var collider = this.GetComponent<Collider2D>();
+                    if (controller.hasTeleport && Shuriken.GS.TeleportEnabled)
+                    {
+                        if (controller.teleported || collider.IsTouchingLayers(8) || createdInAir==true) { }
+                        else
+                        {
 
 
-                        yield return new WaitForSeconds(0.045f);
-                        HeroController.instance.transform.position = this.transform.position;
-                        yield return new WaitForSeconds(0.07f);
-                        anim.animator.Play("Scream End");
+                                controller.teleported = true;
+                                var anim = HeroController.instance.GetComponent<HeroAnimationController>();
 
-                        HeroController.instance.RegainControl();
-                        HeroController.instance.StartAnimationControl();
+                                HeroController.instance.RelinquishControl();
+                                HeroController.instance.ResetHardLandingTimer();
+                                HeroController.instance.StopAnimationControl();
 
-                        //Destroy(this.gameObject);
+                                HeroController.instance.dJumpFlashPrefab.SetActive(true);
+                                anim.animator.Play("Scream Start");
+                                anim.animator.Play("Scream");
 
+
+                                yield return new WaitForSeconds(0.07f);
+                                HeroController.instance.transform.position = this.transform.position;
+                                yield return new WaitForSeconds(0.07f);
+                                anim.animator.Play("Scream End");
+
+                                HeroController.instance.RegainControl();
+                                HeroController.instance.StartAnimationControl();
+                            
+
+                        }
                     }
+                    else currentState = states.Back;
+
+                }
                 if (InputHandler.Instance.inputActions.down.IsPressed) Destroy(this.gameObject);
                 else currentState = states.Back;
-
-            }
-            else currentState = states.Back;
             }
 
         }

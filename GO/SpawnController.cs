@@ -19,12 +19,12 @@ namespace Shuriken.GO
         public GameObject shurikenInstance;
         public ProjectileBehaviour projectileBehaviour;
 
-        public float speed = 25;
-        public float fowardTime = 0.33f;
-        public int damageHover => ((int)(PlayerData.instance.nailDamage*1.2f * (Shuriken.LS.shurikenLevel * 0.5f)));
-        public int damageContact => ((int)(20 * (PlayerData.instance.equippedCharm_19 ? 1.3f : 1) * (Shuriken.LS.shurikenLevel * 0.5f)));
-        public float ratio = 3;
-        public bool teleported = false;
+        public  float speed = 25;
+        public  float fowardTime = 0.33f;
+        public static int damageHover => ((int)(PlayerData.instance.nailDamage/3+ Shuriken.LS.shurikenLevel));
+        public static int damageContact => ((int)(6 * (PlayerData.instance.equippedCharm_19 ? 1.3f : 1) + (Shuriken.LS.shurikenLevel * 2)));
+        public  float ratio = 3;
+        public  bool teleported = false;
 
         public int damage()
         {
@@ -45,7 +45,7 @@ namespace Shuriken.GO
         {
             NewDamage damageEnemiesW = shuriken.GetAddComponent<NewDamage>();
             damageEnemiesW.gameObject.layer = ((int)PhysLayers.DEFAULT);
-            damageEnemiesW.attackType = AttackTypes.Spell;
+            damageEnemiesW.attackType = AttackTypes.Generic;
             damageEnemiesW.ignoreInvuln = false;
             damageEnemiesW.magnitudeMult = 0.001f;
             damageEnemiesW.moveDirection = false;

@@ -11,7 +11,7 @@ namespace Shuriken.Rando
     public class MenuHolder
     {
         internal MenuPage Shuriken;
-        internal MenuElementFactory<SGlobalSettings> rpMEF;
+        internal MenuElementFactory<SRandoSettings> rpMEF;
         internal VerticalItemPanel rpVIP;
 
         internal SmallButton JumpToRPButton;
@@ -41,7 +41,7 @@ namespace Shuriken.Rando
         private void ConstructMenu(MenuPage landingPage)
         {
             Shuriken = new MenuPage("Shuriken", landingPage);
-            rpMEF = new(Shuriken, global::Shuriken.Shuriken.GS);
+            rpMEF = new(Shuriken, global::Shuriken.Shuriken.GS.RS);
 
             rpVIP = new(Shuriken, new(10, 300), 50f, false, rpMEF.Elements);
         }

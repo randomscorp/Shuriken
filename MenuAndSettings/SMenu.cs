@@ -25,11 +25,16 @@ namespace Shuriken
                     keyBindAction: Shuriken.GS.shuriknBind.ShurikenKey,
                     buttonBindAction:Shuriken.GS.shurikenButton.ShurikenKey
                     ),
-/*                    
-                    new HorizontalOption("Teleport","",new[]{"ON","OFF" },
-                    Action=>Shuriken.LS.hasTeleport= Action==0,
-                    ()=>Shuriken.LS.hasTeleport?0:1),
-*/
+                   
+                    new HorizontalOption("Teleport","",new[]{"Enabled","Disabled" },
+                    Action=>Shuriken.GS.TeleportEnabled= Action==0,
+                    ()=>Shuriken.GS.TeleportEnabled?0:1),
+
+                  /*  new HorizontalOption("Soul Mode","Teleport now costs soul",new[]{"Enabled","Disabled" },
+                    Action=>Shuriken.GS.SoulMode= Action==0,
+                    ()=>Shuriken.GS.SoulMode?0:1
+                    ),*/
+
 
                 });
             return MyMenu.GetMenuScreen(modListMenu);

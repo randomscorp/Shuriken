@@ -55,18 +55,18 @@ namespace Shuriken.Rando
 
         private static void ApplyLogic(GenerationSettings gs, LogicManagerBuilder lmb)
         {
-            if (!Shuriken.GS.shurikenRando) return;
+            if (!Shuriken.GS.RS.shurikenRando) return;
 
 
         }
         private static void DefineTermsAndItems(GenerationSettings gs, LogicManagerBuilder lmb)
         {
-            if (!Shuriken.GS.shurikenRando) return;
+            if (!Shuriken.GS.RS.shurikenRando) return;
             Term shurikenterm= lmb.GetOrAddTerm("SHURIKEN");
-            if (Shuriken.GS.items == 0) Shuriken.GS.items = 1;
-            if (Shuriken.GS.RandomizeTeleport&& Shuriken.GS.items == 1) Shuriken.GS.items = 2;
+            if (Shuriken.GS.RS.items == 0) Shuriken.GS.RS.items = 1;
+            if (Shuriken.GS.RS.DontRandomizeTeleport&& Shuriken.GS.RS.items == 1) Shuriken.GS.RS.items = 2;
 
-            lmb.AddItem(new SingleItem("Shuriken",new TermValue(shurikenterm, Shuriken.GS.items)));
+            lmb.AddItem(new SingleItem("Shuriken",new TermValue(shurikenterm, Shuriken.GS.RS.items)));
 
         }
     }
