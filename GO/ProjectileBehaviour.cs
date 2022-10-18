@@ -85,7 +85,7 @@ namespace Shuriken.GO
         }
 
 
-        public void ChangeState()
+        public IEnumerator ChangeState()
         {
             if (currentState != states.Hang)
             {
@@ -103,20 +103,41 @@ namespace Shuriken.GO
                 RaycastHit2D rayUp = Physics2D.Raycast(transform.position, Vector2.up);
                 if (controller.hasTeleport)
                 {
-                    if (controller.teleported) return;
-                    controller.teleported = true;
-                    HeroController.instance.transform.position = this.transform.position;
-                HeroController.instance.ResetHardLandingTimer();
+                        if (controller.teleported) yield return null;
+                        controller.teleported = true;
+                        var anim = HeroController.instance.GetComponent<HeroAnimationController>();
 
-                        Destroy(this.gameObject);
-                }
-                }
+                        HeroController.instance.RelinquishControl();
+                        HeroController.instance.ResetHardLandingTimer();
+                            HeroController.instance.StopAnimationControl();
+
+                        HeroController.instance.dJumpFlashPrefab.SetActive(true);
+                        yield return new WaitForSeconds(0.025f);
+                        anim.animator.Play("Scream Start");
+                        anim.animator.Play("Scream");
+
+
+                        yield return new WaitForSeconds(0.045f);
+                        HeroController.instance.transform.position = this.transform.position;
+                        yield return new WaitForSeconds(0.07f);
+                        anim.animator.Play("Scream End");
+
+                        HeroController.instance.RegainControl();
+                        HeroController.instance.StartAnimationControl();
+
+                        //Destroy(this.gameObject);
+
+                    }
                 if (InputHandler.Instance.inputActions.down.IsPressed) Destroy(this.gameObject);
                 else currentState = states.Back;
 
             }
             else currentState = states.Back;
+            }
+
         }
+
+
     }
 
     public enum states

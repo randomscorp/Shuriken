@@ -54,7 +54,7 @@ namespace Shuriken.GO
             damageEnemiesW.damageLimit = 50;
 
             shuriken.GetAddComponent<Rigidbody2D>().gravityScale=0;
-            var col = shuriken.AddComponent<CircleCollider2D>();
+            var col = shuriken.AddComponent<BoxCollider2D>();
             col.isTrigger = true;
 
             shuriken.transform.localScale /= 4;// 2.7f;
@@ -80,7 +80,7 @@ namespace Shuriken.GO
                     shurikenInstance.GetAddComponent<ProjectileBehaviour>().direction = Shuriken.InputVector();
                     shurikenInstance.SetActive(true);
                 }
-                else shurikenInstance.GetAddComponent<ProjectileBehaviour>().ChangeState();
+                else StartCoroutine(shurikenInstance.GetAddComponent<ProjectileBehaviour>().ChangeState());
 
             }
         }

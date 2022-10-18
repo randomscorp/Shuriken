@@ -82,18 +82,23 @@ namespace Shuriken.GO
         // Token: 0x0600089A RID: 2202 RVA: 0x0002F13C File Offset: 0x0002D33C
         private void FixedUpdate()
         {
-            for (int i = this.enteredColliders.Count - 1; i >= 0; i--)
+            try
             {
-                Collider2D collider2D = this.enteredColliders[i];
-                if (collider2D == null || !collider2D.isActiveAndEnabled)
+                for (int i = this.enteredColliders.Count - 1; i >= 0; i--)
                 {
-                    this.enteredColliders.RemoveAt(i);
-                }
-                else
-                {
-                    this.DoDamage(collider2D.gameObject);
+                    Collider2D collider2D = this.enteredColliders[i];
+                    if (collider2D == null || !collider2D.isActiveAndEnabled)
+                    {
+                        this.enteredColliders.RemoveAt(i);
+                    }
+                    else
+                    {
+                        this.DoDamage(collider2D.gameObject);
+                    }
                 }
             }
+            catch { }
+
         }
 
         // Token: 0x0600089B RID: 2203 RVA: 0x0002F19C File Offset: 0x0002D39C
