@@ -34,5 +34,6 @@ This mod used code or consulted the following:
 * [RainbowEggs](https://github.com/dpinela/RainbowEggs) by Pimpas
 * [Modding Docs](https://prashantmohta.github.io/ModdingDocs/)
 
-If you recognized something that wasn't credited here, please feel free to contact me.
+If you recognized something that wasn't credited here, please feel free to contact me. 
+#
 Special thanks to Mulhima for the help with the menus and Dwarf for playtesting.
