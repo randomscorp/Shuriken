@@ -65,12 +65,13 @@ namespace Shuriken.GO
             projectileBehaviour = shuriken.GetAddComponent<ProjectileBehaviour>();
 
 
+
         }
 
 
         private void Update()
         {
-            if (canShuriken() && key.IsPressed && key.HasChanged && button.IsPressed && button.HasChanged)
+            if (canShuriken() && ((key.IsPressed && key.HasChanged) || (button.IsPressed && button.HasChanged)))
             {
                 if (shurikenInstance == null)
                 {

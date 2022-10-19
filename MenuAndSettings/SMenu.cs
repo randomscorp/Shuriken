@@ -34,7 +34,13 @@ namespace Shuriken
                     Action=>Shuriken.GS.SoulMode= Action==0,
                     ()=>Shuriken.GS.SoulMode?0:1
                     ),*/
-
+                    new CustomSlider(
+                        name:"Rotate Speed",
+                        storeValue:val =>{ Shuriken.GS.RotatingSpeed=val; },
+                        loadValue: ()=>Shuriken.GS.RotatingSpeed,
+                        minValue:0,
+                        maxValue:40
+                        ),
 
                 });
             return MyMenu.GetMenuScreen(modListMenu);

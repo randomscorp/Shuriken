@@ -25,7 +25,7 @@ namespace Shuriken
 
         public bool TeleportEnabled = true;
         public bool SoulMode = false;
-
+        public float RotatingSpeed = 30;
         public SRandoSettings RS= new();
 
     }

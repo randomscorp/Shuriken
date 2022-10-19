@@ -34,6 +34,8 @@ namespace Shuriken.Rando
         {
             JumpToRPButton = new(landingPage, "Shuriken");
             JumpToRPButton.AddHideAndShowEvent(landingPage, Shuriken);
+            JumpToRPButton.Text.color= global::Shuriken.Shuriken.GS.RS.shurikenRando? Colors.TRUE_COLOR : Colors.DEFAULT_COLOR;
+
             button = JumpToRPButton;
             return true;
         }
@@ -42,6 +44,9 @@ namespace Shuriken.Rando
         {
             Shuriken = new MenuPage("Shuriken", landingPage);
             rpMEF = new(Shuriken, global::Shuriken.Shuriken.GS.RS);
+            foreach(var element in rpMEF.Elements) { element.SelfChanged+= (obj)=>
+             JumpToRPButton.Text.color = global::Shuriken.Shuriken.GS.RS.shurikenRando ? Colors.TRUE_COLOR : Colors.DEFAULT_COLOR;
+            }
 
             rpVIP = new(Shuriken, new(10, 300), 50f, false, rpMEF.Elements);
         }

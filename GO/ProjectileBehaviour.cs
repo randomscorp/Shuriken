@@ -88,7 +88,7 @@ namespace Shuriken.GO
         void Hang()
         {
             body.velocity = new Vector2(0, 0);
-            this.transform.Rotate(0, 0, -30);//-10
+            this.transform.Rotate(0, 0, -Shuriken.GS.RotatingSpeed);//-10
         }
 
 
