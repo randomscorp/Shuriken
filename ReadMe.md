@@ -11,6 +11,7 @@ A tiny rando extension a new skill to the game: a shuriken that you can teleport
   * <kbd>Key</kbd>+ <kbd> ↑ </kbd> to teleport.
   * <kbd>Key</kbd>+ <kbd> ↓ </kbd> to destroy it
   * <kbd>Key</kbd> to call it back
+  * Taking damage will destroy it
 * Contact damage scales with shaman, hover damage scales with nail damage and both scale with the amount of shuriken aquired
 * Randomizer 4 integration.
 
