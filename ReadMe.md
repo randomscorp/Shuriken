@@ -23,12 +23,12 @@ The sprites are loaded on initialize and can be customized. Create your own 512x
 ## Credits
 
 This mod used code or consulted the following:
-* SmollKnight by Dandy & Mulhima
-* RandoPlus by Flibber_
-* Randomizer, Randomizercore, Itemchanger and MenuChhanger by Homothethy and Flibber
-* Satchel by Dandy
-* RainbowEggs by Pimpas
-* Modding Docs
+* [SmollKnight](https://github.com/PrashantMohta/Smolknight) by Dandy & Mulhima
+* [RandoPlus](https://github.com/flibber-hk/HollowKnight.RandoPlus) by Flib
+* Randomizer, Randomizercore, Itemchanger and MenuChanger by Homothethy and Flibber
+* [Satchel](https://github.com/PrashantMohta/Satchel) by Dandy
+* [RainbowEggs](https://github.com/dpinela/RainbowEggs) by Pimpas
+* [Modding Docs](https://prashantmohta.github.io/ModdingDocs/)
 
 If you recognized something that wasn't credited here, please feel free to contact me.
-Special thanks to Mulhima for the help with the menus.
+Special thanks to Mulhima for the help with the menus and Dwarf for playtesting.
