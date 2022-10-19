@@ -18,7 +18,7 @@ A tiny rando extension a new skill to the game: a shuriken that you can teleport
 ## Customization
 ![](static/rando.png)
 
-The sprites are loaded on initialize and can be replaced. Create your own 512x512 image and replace the "sprite.png" file on the mod static folder. To replace the pick up icon replace the "rando.png" file in the static folder with your 100x100 image. 
+The sprites are loaded on initialize and can be replaced. Create your own 512x512 image and replace the "Managed/Mods/Shuriken/static/sprite.png" file on the mod static folder. To replace the pick up icon replace the "Managed/Mods/Shuriken/static/rando.png" file in the static folder with your 100x100 image. 
 
 ## Credits
 
