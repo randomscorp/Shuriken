@@ -11,6 +11,7 @@ using UnityEngine;
 using UObject = UnityEngine.Object;
 
 
+
 namespace Shuriken
 {
     public class Shuriken : Mod, ICustomMenuMod, IGlobalSettings<SGlobalSettings>, ILocalSettings<SLocalSettings>
