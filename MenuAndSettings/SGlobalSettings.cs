@@ -18,7 +18,7 @@ namespace Shuriken
         [JsonConverter(typeof(PlayerActionSetConverter))]
         public KeyBinds shuriknBind = new();
         [JsonConverter(typeof(PlayerActionSetConverter))]
-        public KeyBinds shurikenButton = new();
+        public ButtonBinds shurikenButton = new();
 
         // public string spriteName = ( new DirectoryInfo(((Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + $"/static").ToString())).GetFiles()[0].Name);
         //public int randomInt = 0;
@@ -33,7 +33,7 @@ namespace Shuriken
     [Serializable]
     public class SRandoSettings
     {
-        public int items = 1;
+        public int items = 10;
         public bool shurikenRando = true;
         public bool StartWithShuriken = false;
         public bool RandomizeTeleport = false;
@@ -63,11 +63,12 @@ namespace Shuriken
         {
             ShurikenBind = CreatePlayerAction("ShurikenBind");
             DefaultBinds();
-        }
+            ShurikenBind.AddDefaultBinding(InputControlType.LeftStickButton);
+}
 
-        private void DefaultBinds()
+            private void DefaultBinds()
         {
-            //ShurikenBind.AddInputControlType(InputControlType.);
+            ShurikenBind.AddDefaultBinding(InputControlType.LeftStickButton);
         }
 
     }

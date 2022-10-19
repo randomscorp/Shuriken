@@ -23,7 +23,7 @@ namespace Shuriken
                     Blueprints.KeyAndButtonBind(
                     name: "Shuriken Key",
                     keyBindAction: Shuriken.GS.shuriknBind.ShurikenKey,
-                    buttonBindAction:Shuriken.GS.shurikenButton.ShurikenKey
+                    buttonBindAction:Shuriken.GS.shurikenButton.ShurikenBind
                     ),
                    
                     new HorizontalOption("Teleport","",new[]{"Enabled","Disabled" },

@@ -15,7 +15,7 @@ namespace Shuriken.GO
     {
         public GameObject shuriken;
         public PlayerAction key => Shuriken.GS.shuriknBind.ShurikenKey;
-        public PlayerAction button => Shuriken.GS.shurikenButton.ShurikenKey;
+        public PlayerAction button => Shuriken.GS.shurikenButton.ShurikenBind;
         public GameObject shurikenInstance;
         public ProjectileBehaviour projectileBehaviour;
 
